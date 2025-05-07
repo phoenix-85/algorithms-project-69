@@ -8,11 +8,12 @@ function search(array $docs, string $search): array
 
     foreach ($docs as $doc) {
         ['id' => $id, 'text' => $text] = $doc;
-        $words = explode(' ', $text);
-        if (array_search($search, $words)) {
+
+        preg_match_all('/\w+/', $text, $matches);
+
+        if (in_array($search, $matches[0])) {
             $result[] = $id;
         }
     }
-
     return $result;
 }
