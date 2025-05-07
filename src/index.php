@@ -11,9 +11,13 @@ function search(array $docs, string $search): array
 
         preg_match_all('/\w+/', $text, $matches);
 
-        if (in_array($search, $matches[0])) {
-            $result[] = $id;
+        $count = count(array_filter($matches[0], fn($word) => $word == $search));
+
+        if ($count != 0) {
+            $result[$id] = $count;
         }
     }
-    return $result;
+
+    uasort($result, fn($a, $b) => $b <=> $a);
+    return array_keys($result);
 }
