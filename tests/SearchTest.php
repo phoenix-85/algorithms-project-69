@@ -16,7 +16,7 @@ class SearchTest extends TestCase
             ['id' => 'doc3', 'text' => 'coude amount work'],
             ['id' => 'doc4', 'text' => 'shoot. shoot, shootem all.']
         ],
-            'shoot');
+            'shoot all');
         $this->assertEquals([], $actual1);
         $this->assertEquals(['doc4', 'doc1'], $actual2);
     }
